@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Simulador visual de uma máquina de vendas modelada como autômato finito." />
+    <title>Vendo30 | Máquina de vendas</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="." aria-label="Vendo30, início"><span class="brand-mark">V30</span><span>Vendo30</span></a>
+        <div class="machine-status" aria-live="polite"><span class="status-dot"></span><span id="machine-status">Aguardando moeda</span></div>
+      </header>
+
+      <section class="intro">
+        <p class="eyebrow">Laboratório de linguagens formais</p>
+        <h1>Uma moeda por vez.<br /><em>Um estado por vez.</em></h1>
+        <p class="intro-copy">Insira moedas até atingir <strong>30 centavos</strong> e acompanhe a máquina percorrendo seu autômato.</p>
+      </section>
+
+      <section class="workspace" aria-label="Simulador da máquina de vendas">
+        <article class="machine-panel panel">
+          <div class="panel-heading"><div><p class="section-kicker">01 / Simulador</p><h2>Escolha sua moeda</h2></div><span class="round-label">Aceita 5 · 10 · 25¢</span></div>
+          <div class="balance-display"><div><span class="display-label">Crédito inserido</span><div class="balance-value"><span id="balance">0</span><small>¢</small></div></div><div class="target-copy">Meta<br /><strong>30¢</strong></div></div>
+          <div class="progress-track" aria-label="Progresso até 30 centavos"><span id="progress-bar"></span></div>
+          <div class="coin-actions" aria-label="Inserir moeda">
+            <button class="coin-button" data-coin="5"><img class="coin-image" src="https://images.unsplash.com/photo-1604594849809-dfedbc827105?auto=format&amp;fit=crop&amp;w=160&amp;q=85" alt="Moedas"><span>5¢</span><small>inserir</small></button>
+            <button class="coin-button" data-coin="10"><img class="coin-image" src="https://images.unsplash.com/photo-1604594849809-dfedbc827105?auto=format&amp;fit=crop&amp;w=160&amp;q=85" alt="Moedas"><span>10¢</span><small>inserir</small></button>
+            <button class="coin-button coin-button-large" data-coin="25"><img class="coin-image" src="https://images.unsplash.com/photo-1604594849809-dfedbc827105?auto=format&amp;fit=crop&amp;w=160&amp;q=85" alt="Moedas"><span>25¢</span><small>inserir</small></button>
+          </div>
+          <div id="message" class="message" role="status">A máquina está pronta para receber sua primeira moeda.</div>
+          <div class="products-area" id="products-area" aria-live="polite">
+            <div class="products-heading"><div><span class="display-label">Vitrine de produtos</span><h3>Escolha um produto</h3></div><span class="free-badge" id="change-badge">Bloqueada · 30¢</span></div>
+            <div class="product-grid" id="product-grid"></div>
+          </div>
+          <button class="reset-button" id="reset-button" type="button">Reiniciar simulação <span>↗</span></button>
+        </article>
+
+        <article class="automaton-panel panel">
+          <div class="panel-heading"><div><p class="section-kicker">02 / Autômato finito</p><h2>Mapa de estados</h2></div><span class="state-readout" id="state-readout">q0</span></div>
+          <div class="automaton-wrap">
+            <svg class="automaton-graph" id="automaton-graph" viewBox="0 0 760 330" role="img" aria-label="Autômato completo da máquina de vendas"></svg>
+          </div>
+          <div class="legend"><span><i class="legend-dot current"></i> estado atual</span><span><i class="legend-dot accepted"></i> estado de aceitação</span><span><i class="legend-arrow">→</i> transição válida</span></div>
+          <div class="transition-log"><div class="log-heading"><span>Histórico de transições</span><span id="transition-count">0 iterações</span></div><ol id="transition-log-list" class="log-list"><li class="empty-log">As transições aparecerão aqui.</li></ol></div>
+        </article>
+      </section>
+      <footer class="footer-note"><span>δ(q, moeda) = q + moeda</span><span>Estados finais: q30</span></footer>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
