@@ -2,9 +2,10 @@
 
 Simulador visual de uma máquina de vendas modelada como um autômato finito determinístico. O projeto permite inserir moedas, acompanhar o crédito, escolher um produto e observar cada transição no autômato de forma interativa.
 
-## Executar
+## Acesso
 
-Abra o arquivo `index.html` em um navegador. O projeto funciona diretamente no navegador e não exige instalação de dependências ou etapa de build.
+Link para acessar direto no github pages:
+https://everton2803.github.io/lfa-maquina-de-vendas/
 
 ## Painel da máquina
 
